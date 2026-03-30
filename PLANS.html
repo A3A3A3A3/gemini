@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plans - Gemini Fitness</title>
+  <link rel="stylesheet" href="gemini.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    /* Plans page specific styles - matching dark theme */
+    .plans-hero {
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+      background-size: cover;
+      background-position: center;
+      padding: 160px 20px 80px;
+      text-align: center;
+      margin-top: 70px;
+    }
+    .plans-hero h1 {
+      font-size: 3.5rem;
+      color: #fff;
+      margin-bottom: 20px;
+      animation: fadeInUp 0.8s ease;
+    }
+    .plans-hero p {
+      font-size: 1.2rem;
+      color: #ddd;
+      max-width: 700px;
+      margin: 0 auto;
+      animation: fadeInUp 0.8s ease 0.1s both;
+    }
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .plans-container {
+      max-width: 1200px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+    .plans-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin: 40px 0;
+    }
+    .plan-card {
+      background: #1a1a1a;
+      border-radius: 20px;
+      padding: 30px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid #2a2a2a;
+      animation: fadeInUp 0.6s ease backwards;
+    }
+    .plan-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 30px -10px rgba(0,0,0,0.5);
+      border-color: rgb(94, 255, 0);
+    }
+    .plan-card h2 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+    .price {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: rgb(94, 255, 0);
+      margin: 20px 0;
+    }
+    .price small {
+      font-size: 1rem;
+      color: #aaa;
+    }
+    .plan-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0;
+    }
+    .plan-card li {
+      padding: 10px 0;
+      color: #ccc;
+      border-bottom: 1px solid #2a2a2a;
+    }
+    .plan-card li:last-child {
+      border-bottom: none;
+    }
+    .plan-btn {
+      display: inline-block;
+      background: transparent;
+      border: 2px solid rgb(94, 255, 0);
+      color: rgb(94, 255, 0);
+      padding: 12px 30px;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      margin-top: 20px;
+    }
+    .plan-btn:hover {
+      background: rgb(94, 255, 0);
+      color: #000;
+    }
+    .featured {
+      border: 1px solid rgb(94, 255, 0);
+      position: relative;
+      overflow: hidden;
+    }
+    .featured::before {
+      content: "Most Popular";
+      position: absolute;
+      top: 20px;
+      right: -30px;
+      background: rgb(94, 255, 0);
+      color: #000;
+      padding: 5px 40px;
+      transform: rotate(45deg);
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+    .franchise-section {
+      background: #0a0a0a;
+      padding: 60px 20px;
+      text-align: center;
+      border-top: 1px solid #2a2a2a;
+      border-bottom: 1px solid #2a2a2a;
+      margin: 40px 0;
+    }
+    .franchise-section h3 {
+      font-size: 2rem;
+      color: #fff;
+      margin-bottom: 15px;
+    }
+    .franchise-section p {
+      color: #ccc;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .franchise-btn {
+      display: inline-block;
+      background: rgb(94, 255, 0);
+      color: #000;
+      padding: 12px 30px;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 20px;
+      transition: 0.3s;
+    }
+    .franchise-btn:hover {
+      background: #fff;
+      color: #000;
+    }
+    @media (max-width: 768px) {
+      .plans-hero {
+        padding: 120px 20px 60px;
+        align-items: center;
+      }
+      .plans-hero h1 {
+        font-size: 2.5rem;
+      }
+      .plan-card {
+        padding: 20px;
+      }
+      .price {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav class="nav-bar">
+    <div class="menu-toggle" id="mobile-menu" onclick="toggleMobileMenu()">
+      <span></span><span></span><span></span>
+    </div>
+    <ul>
+      <img src="ChatGPT Image Mar 10, 2026, 02_44_43 PM.png" alt="Gemini Fitness" class="logo">
+      <img src="ChatGPT Image Mar 10, 2026, 02_49_29 PM.png" alt="Gemini Fitness" class="log">
+    </ul>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="SERVICES.html">Studio</a></li>
+      <li><a href="TRAINER.html">Membership Benefits</a></li>
+      <li><a href="PLANS.html">Plans</a></li>
+    </ul>
+    <ul>
+      <li><a href="CONTACT.html" class="join-now">Join Now</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="plans-hero">
+  <h1>Choose Your Plan</h1>
+  <p>Flexible memberships designed to fit your lifestyle and goals. Start your journey today.</p>
+</section>
+
+<div class="plans-container">
+  <div class="plans-grid">
+    <div class="plan-card" style="animation-delay: 0.1s;">
+      <h2>Basic</h2>
+      <div class="price">₹699 <small>/ month</small></div>
+      <ul>
+        <li>Access to studio (off-peak)</li>
+        <li>1 group class per week</li>
+        <li>Locker room access</li>
+        <li>Basic fitness assessment</li>
+      </ul>
+      <a href="CONTACT.html" class="plan-btn">Get Started</a>
+    </div>
+    <div class="plan-card featured" style="animation-delay: 0.2s;">
+      <h2>Premium</h2>
+      <div class="price">₹3999 <small>/ quarter</small></div>
+      <ul>
+        <li>Unlimited studio access</li>
+        <li>4 group classes per week</li>
+        <li>Locker & towel service</li>
+        <li>Monthly nutrition consult</li>
+        <li>Access to rooftop gym</li>
+      </ul>
+      <a href="CONTACT.html" class="plan-btn">Get Started</a>
+    </div>
+    <div class="plan-card" style="animation-delay: 0.3s;">
+      <h2>Elite</h2>
+      <div class="price">₹6999 <small>/ year</small></div>
+      <ul>
+        <li>24/7 priority access</li>
+        <li>Unlimited classes & workshops</li>
+        <li>Spa & recovery area</li>
+        <li>1-on-1 personal training (4x/month)</li>
+        <li>Exclusive member events</li>
+      </ul>
+      <a href="CONTACT.html" class="plan-btn">Get Started</a>
+    </div>
+  </div>
+</div>
+
+<section class="franchise-section">
+  <h3>Franchise Opportunity</h3>
+  <p>Join India's most unique fitness studio. Own a Gemini Fitness franchise and be part of a revolution.</p>
+  <a href="CONTACT.html" class="franchise-btn">Inquire Now</a>
+<footer>
+  <div class="footer-container">
+    <!-- Column 1: About Section (like FitFormance) -->
+    <div class="footer-col">
+      <h3>About <i class="fas fa-chevron-down"></i></h3>
+      <ul>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Services</a></li>
+        <li><a href="#">Cancellations & Refund</a></li>
+      </ul>
+    </div>
+
+    <!-- Column 2: Privacy Policy & FAQs (separate section) -->
+    <div class="footer-col">
+      <ul class="double-links">
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">FAQs</a></li>
+      </ul>
+    </div>
+
+    <!-- Column 3: Contact & Social -->
+    <div class="footer-col">
+      <div class="contact-info">
+        <p><i class="fas fa-phone-alt"></i> +91 78876 96477</p>
+        <p><i class="fas fa-envelope"></i> info@geminifitness.com</p>
+      </div>
+      <div class="social-icons">
+        <a href="https://www.instagram.com/geminifitness_boisar?igsh=MWw1NXc4aGs4Ynpwdg==" target="_blank"><i class="fab fa-instagram"></i> </a>
+        <a href="#" target="_blank"><i class="fab fa-facebook-f"></i> </a>
+        <a href="https://wa.me/917887696477" target="_blank"><i class="fab fa-whatsapp"></i> </a>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="footer-bottom">
+    <p>© 2026 Gemini Fitness. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="gemini.js"></script>
+</body>
+</html>
